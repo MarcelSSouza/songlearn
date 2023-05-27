@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "640087565519",
+    "project_id": "song-learn-flutter",
+    "storage_bucket": "song-learn-flutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:640087565519:android:513f3c09545e32923943ba",
+        "android_client_info": {
+          "package_name": "com.example.songlearn"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDA4O-TFuJnJ_kxTfELrvatNxx0fzFUZ0k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

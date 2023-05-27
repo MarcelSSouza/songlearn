@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
-
-void main() {
+import 'package:songlearn/Pages/LoginForm.dart';
+import 'package:songlearn/Pages/Register.dart';
+import 'package:songlearn/Pages/map.dart';
+import 'dart:async';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+import 'package:sqflite/sqflite.dart';
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MusicLearningApp());
 }
+
+
 
 class MusicLearningApp extends StatelessWidget {
   @override
@@ -12,10 +24,13 @@ class MusicLearningApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(),
+      home: MapScreen(),
     );
   }
 }
+
+
+
 
 class HomePage extends StatelessWidget {
   @override
