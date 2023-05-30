@@ -77,24 +77,8 @@ class _LoginState extends State<Login> {
                       _emailController.clear();
                       _passwordController.clear();
 
-                      // Show a success message or navigate to another screen
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            title: Text('Login Successful'),
-                            content: Text('User logged in successfully.'),
-                            actions: [
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                                child: Text('OK'),
-                              ),
-                            ],
-                          );
-                        },
-                      );
+                      // Navigate to the menu page after login
+                      Navigator.pushNamed(context, '/video');
                     } catch (e) {
                       showDialog(
                         context: context,
