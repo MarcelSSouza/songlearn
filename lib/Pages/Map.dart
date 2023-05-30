@@ -26,8 +26,7 @@ class _MapScreenState extends State<MapScreen> {
           ),
         ]),
         onMapCreated: (GoogleMapController controller) {
-          // Called when the map is created and ready to be used
-          // You can perform additional map configuration here
+
         },
       ),
     );

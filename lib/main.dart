@@ -3,6 +3,7 @@ import 'package:songlearn/Pages/Register.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'Pages/Login.dart';
 import 'Pages/Map.dart';
+import 'Pages/QRCodeScannerPage.dart';
 import 'Pages/VideoListPage.dart';
 import 'Pages/VideoUploadPage.dart';
 import 'firebase_options.dart';
@@ -25,7 +26,7 @@ class LearningMusicApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: VideoListPage(),
+      home: QRCodeScannerPage(),
        routes: {
         '/menu': (context) => MenuPage(),
         '/login': (context) => Login(),
@@ -33,6 +34,7 @@ class LearningMusicApp extends StatelessWidget {
         '/map': (context) => MapScreen(),
         '/video': (context) => VideoUploadPage(),
         '/videoList': (context) => VideoListPage(),
+        'QRCodeScanner': (context) => QRCodeScannerPage(),
       },
     );
   }
