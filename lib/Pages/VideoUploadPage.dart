@@ -11,6 +11,7 @@ class VideoUploadPage extends StatefulWidget {
 
 class _VideoUploadPageState extends State<VideoUploadPage> {
   File? _videoFile;
+  TextEditingController _videoNameController = TextEditingController();
 
   void _pickVideo() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(
@@ -42,6 +43,12 @@ class _VideoUploadPageState extends State<VideoUploadPage> {
   }
 
   @override
+  void dispose() {
+    _videoNameController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -59,19 +66,29 @@ class _VideoUploadPageState extends State<VideoUploadPage> {
             if (_videoFile != null)
               Text('Selected Video: ${_videoFile!.path}'),
             SizedBox(height: 16.0),
+            TextField(
+              controller: _videoNameController,
+              decoration: InputDecoration(
+                labelText: 'Video Name',
+              ),
+            ),
+            SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () async {
                 if (_videoFile != null) {
-                  String videoName = 'video_name.mp4'; 
-                  String downloadURL = await uploadVideo(_videoFile!, videoName);
-                  print('Download URL: $downloadURL');
-                  //alert user that upload was successful
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text('Video uploaded successfully'),
-                    ),
-                  );
-
+                  String videoName = _videoNameController.text.trim();
+                  if (videoName.isNotEmpty) {
+                    String downloadURL = await uploadVideo(_videoFile!, videoName);
+                    print('Download URL: $downloadURL');
+                    // Alert the user that upload was successful
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('Video uploaded successfully'),
+                      ),
+                    );
+                  } else {
+                    print('Please enter a video name');
+                  }
                 } else {
                   print('Please select a video file');
                 }
