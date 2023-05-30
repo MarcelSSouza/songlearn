@@ -13,7 +13,6 @@ class _QRCodeScannerPageState extends State<QRCodeScannerPage> {
   Future<void> _scanQRCode() async {
     String? cameraScanResult = await scanner.scan();
 
-    //froms trign to uri
     Uri cameraScanResultUri = Uri.parse(cameraScanResult!);
 
     setState(() {
