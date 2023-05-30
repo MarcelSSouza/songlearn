@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:songlearn/Pages/LoginForm.dart';
+import 'package:songlearn/Pages/Login.dart';
 import 'package:songlearn/Pages/Register.dart';
-import 'package:songlearn/Pages/map.dart';
-import 'dart:async';
+import 'package:songlearn/Pages/Map.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'dart:async';
+
 import 'firebase_options.dart';
-import 'package:sqflite/sqflite.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -20,17 +20,19 @@ class MusicLearningApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Music Learning App',
+      title: 'SongLearn',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.purple,
       ),
-      home: MapScreen(),
+      home: Register(),
+      routes: {
+        '/login': (context) => Login(),
+        '/register': (context) => Register(),
+        '/map': (context) => MapScreen(),
+      },
     );
   }
 }
-
-
-
 
 class HomePage extends StatelessWidget {
   @override

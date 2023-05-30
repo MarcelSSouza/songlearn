@@ -49,6 +49,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '640087565519',
     projectId: 'song-learn-flutter',
     authDomain: 'song-learn-flutter.firebaseapp.com',
+    databaseURL: 'https://song-learn-flutter-default-rtdb.firebaseio.com',
     storageBucket: 'song-learn-flutter.appspot.com',
   );
 
@@ -57,6 +58,7 @@ class DefaultFirebaseOptions {
     appId: '1:640087565519:android:513f3c09545e32923943ba',
     messagingSenderId: '640087565519',
     projectId: 'song-learn-flutter',
+    databaseURL: 'https://song-learn-flutter-default-rtdb.firebaseio.com',
     storageBucket: 'song-learn-flutter.appspot.com',
   );
 
@@ -65,6 +67,7 @@ class DefaultFirebaseOptions {
     appId: '1:640087565519:ios:a5418ecde78164eb3943ba',
     messagingSenderId: '640087565519',
     projectId: 'song-learn-flutter',
+    databaseURL: 'https://song-learn-flutter-default-rtdb.firebaseio.com',
     storageBucket: 'song-learn-flutter.appspot.com',
     iosBundleId: 'com.example.songlearn',
   );
@@ -74,6 +77,7 @@ class DefaultFirebaseOptions {
     appId: '1:640087565519:ios:b504c98143813e9d3943ba',
     messagingSenderId: '640087565519',
     projectId: 'song-learn-flutter',
+    databaseURL: 'https://song-learn-flutter-default-rtdb.firebaseio.com',
     storageBucket: 'song-learn-flutter.appspot.com',
     iosBundleId: 'com.example.songlearn.RunnerTests',
   );

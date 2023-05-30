@@ -1,6 +1,6 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 class Register extends StatefulWidget {
   @override
   _RegisterState createState() => _RegisterState();
@@ -11,6 +11,8 @@ class _RegisterState extends State<Register> {
   TextEditingController _nameController = TextEditingController();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
+  final FirebaseDatabase _database = FirebaseDatabase.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
   void dispose() {
@@ -72,16 +74,75 @@ class _RegisterState extends State<Register> {
                 },
               ),
               SizedBox(height: 16),
-              ElevatedButton(
+ElevatedButton(
+onPressed: () async {
+  if (_formKey.currentState!.validate()) {
+    final String name = _nameController.text;
+    final String email = _emailController.text;
+    final String password = _passwordController.text;
+
+    try {
+      UserCredential userCredential =
+          await _auth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
+      // You can access the user details from the userCredential if needed
+      User? user = userCredential.user;
+      
+      // Clear the form fields
+      _nameController.clear();
+      _emailController.clear();
+      _passwordController.clear();
+
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Registration Successful'),
+            content: Text('User registered successfully.'),
+            actions: [
+              TextButton(
                 onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    // Registration logic goes here
-                    // Access the form values using _nameController.text, _emailController.text, _passwordController.text
-                    // You can make API calls or perform any necessary actions for registration
-                  }
+                  Navigator.pop(context);
                 },
-                child: Text('Register'),
+                child: Text('OK'),
               ),
+            ],
+          );
+        },
+      );
+    } catch (e) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Registration Failed'),
+            content: Text(e.toString()),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+    }
+  }
+}, child: Text('Register')),
+              SizedBox(height: 16),
+              TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/login');
+                },
+                child: Text('Already have an account? Login here'),
+              ),
+
+
             ],
           ),
         ),

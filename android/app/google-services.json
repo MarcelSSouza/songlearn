@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "640087565519",
+    "firebase_url": "https://song-learn-flutter-default-rtdb.firebaseio.com",
     "project_id": "song-learn-flutter",
     "storage_bucket": "song-learn-flutter.appspot.com"
   },
