@@ -1,4 +1,3 @@
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 class Register extends StatefulWidget {
@@ -11,7 +10,6 @@ class _RegisterState extends State<Register> {
   TextEditingController _nameController = TextEditingController();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
-  final FirebaseDatabase _database = FirebaseDatabase.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
@@ -55,7 +53,6 @@ class _RegisterState extends State<Register> {
                   if (value!.isEmpty) {
                     return 'Please enter your email';
                   }
-                  // You can add additional email validation logic here
                   return null;
                 },
               ),
@@ -69,7 +66,6 @@ class _RegisterState extends State<Register> {
                   if (value!.isEmpty) {
                     return 'Please enter a password';
                   }
-                  // You can add additional password validation logic here
                   return null;
                 },
               ),
