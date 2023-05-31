@@ -26,7 +26,7 @@ class LearningMusicApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: QRCodeScannerPage(),
+      home: Register(),
        routes: {
         '/menu': (context) => MenuPage(),
         '/login': (context) => Login(),
@@ -34,7 +34,7 @@ class LearningMusicApp extends StatelessWidget {
         '/map': (context) => MapScreen(),
         '/video': (context) => VideoUploadPage(),
         '/videoList': (context) => VideoListPage(),
-        'QRCodeScanner': (context) => QRCodeScannerPage(),
+        '/QRCodeScanner': (context) => QRCodeScannerPage(),
       },
     );
   }
@@ -48,43 +48,43 @@ class MenuPage extends StatelessWidget {
         title: Text('Learning Music'),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: ButtonBar(
+          alignment: MainAxisAlignment.center,
           children: <Widget>[
-            MenuButton(
-              title: 'Lessons',
-              icon: Icons.book,
-              onTap: () {
-                // Handle "Lessons" section tap
+            ElevatedButton.icon(
+              onPressed: () {
+                Navigator.pushNamed(context, '/videoList');
               },
+              icon: Icon(Icons.book),
+              label: Text('Lessons'),
             ),
-            MenuButton(
-              title: 'Exercises',
-              icon: Icons.fitness_center,
-              onTap: () {
-                // Handle "Exercises" section tap
+            ElevatedButton.icon(
+              onPressed: () {
+                Navigator.pushNamed(context, '/map');
               },
+              icon: Icon(Icons.map_rounded),
+              label: Text('Map'),
             ),
-            MenuButton(
-              title: 'Practice',
-              icon: Icons.music_note,
-              onTap: () {
-                // Handle "Practice" section tap
+            ElevatedButton.icon(
+              onPressed: () {
+                Navigator.pushNamed(context, '/QRCodeScanner');
               },
+              icon: Icon(Icons.music_note),
+              label: Text('Scan Lesson'),
             ),
-            MenuButton(
-              title: 'Progress',
-              icon: Icons.bar_chart,
-              onTap: () {
-                // Handle "Progress" section tap
+            ElevatedButton.icon(
+              onPressed: () {
+                Navigator.pushNamed(context, '/video');
               },
+              icon: Icon(Icons.video_camera_back),
+              label: Text('Upload Video'),
             ),
-            MenuButton(
-              title: 'Settings',
-              icon: Icons.settings,
-              onTap: () {
+            ElevatedButton.icon(
+              onPressed: () {
                 // Handle "Settings" section tap
               },
+              icon: Icon(Icons.settings),
+              label: Text('Settings'),
             ),
           ],
         ),

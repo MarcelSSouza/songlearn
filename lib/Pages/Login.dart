@@ -78,7 +78,7 @@ class _LoginState extends State<Login> {
                       _passwordController.clear();
 
                       // Navigate to the menu page after login
-                      Navigator.pushNamed(context, '/video');
+                      Navigator.pushNamed(context, '/menu');
                     } catch (e) {
                       showDialog(
                         context: context,
