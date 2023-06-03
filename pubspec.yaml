@@ -47,6 +47,9 @@ dependencies:
   url_launcher: ^6.0.0
   qrscan: ^0.3.3
   camera: ^0.10.5+2
+  vibration: ^1.7.7
+  cloud_firestore: ^4.8.0
+  geolocator: ^9.0.2
 
   
 

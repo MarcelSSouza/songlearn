@@ -6,6 +6,7 @@ import 'Pages/Map.dart';
 import 'Pages/QRCodeScannerPage.dart';
 import 'Pages/VideoListPage.dart';
 import 'Pages/VideoUploadPage.dart';
+import 'Pages/MetronomeApp.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -35,6 +36,7 @@ class LearningMusicApp extends StatelessWidget {
         '/video': (context) => VideoUploadPage(),
         '/videoList': (context) => VideoListPage(),
         '/QRCodeScanner': (context) => QRCodeScannerPage(),
+        '/metronome': (context) => MetronomeScreen(),
       },
     );
   }
@@ -81,7 +83,7 @@ class MenuPage extends StatelessWidget {
             ),
             ElevatedButton.icon(
               onPressed: () {
-                // Handle "Settings" section tap
+                Navigator.pushNamed(context, '/metronome');
               },
               icon: Icon(Icons.settings),
               label: Text('Settings'),

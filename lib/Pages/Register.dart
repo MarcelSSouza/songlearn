@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:firebase_database/firebase_database.dart';
+
 class Register extends StatefulWidget {
   @override
   _RegisterState createState() => _RegisterState();
@@ -18,6 +21,91 @@ class _RegisterState extends State<Register> {
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
+  }
+
+  Future<void> _registerUser() async {
+    if (_formKey.currentState!.validate()) {
+      final String name = _nameController.text;
+      final String email = _emailController.text;
+      final String password = _passwordController.text;
+
+      try {
+        UserCredential userCredential =
+            await _auth.createUserWithEmailAndPassword(
+          email: email,
+          password: password,
+        );
+
+        // Save user details to the Realtime Database
+        if (userCredential.user != null) {
+          DatabaseReference userRef =
+              FirebaseDatabase.instance.reference().child('users');
+          userRef.child(userCredential.user!.uid).set({
+            'name': name,
+            'email': email,
+          });
+
+          // Get current location
+          Position position = await Geolocator.getCurrentPosition(
+            desiredAccuracy: LocationAccuracy.high,
+          );
+          double latitude = position.latitude;
+          double longitude = position.longitude;
+
+          // Save location to the Realtime Database
+          userRef
+              .child(userCredential.user!.uid)
+              .child('latitude')
+              .set(latitude);
+          userRef
+              .child(userCredential.user!.uid)
+              .child('longitude')
+              .set(longitude);
+        }
+
+        // Clear the form fields
+        _nameController.clear();
+        _emailController.clear();
+        _passwordController.clear();
+
+        // Show registration success dialog
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Registration Successful'),
+              content: Text('User registered successfully.'),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text('OK'),
+                ),
+              ],
+            );
+          },
+        );
+      } catch (e) {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Registration Failed'),
+              content: Text(e.toString()),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text('OK'),
+                ),
+              ],
+            );
+          },
+        );
+      }
+    }
   }
 
   @override
@@ -70,66 +158,10 @@ class _RegisterState extends State<Register> {
                 },
               ),
               SizedBox(height: 16),
-ElevatedButton(
-onPressed: () async {
-  if (_formKey.currentState!.validate()) {
-    final String name = _nameController.text;
-    final String email = _emailController.text;
-    final String password = _passwordController.text;
-
-    try {
-      UserCredential userCredential =
-          await _auth.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-
-      // You can access the user details from the userCredential if needed
-      User? user = userCredential.user;
-      
-      // Clear the form fields
-      _nameController.clear();
-      _emailController.clear();
-      _passwordController.clear();
-
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text('Registration Successful'),
-            content: Text('User registered successfully.'),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Text('OK'),
+              ElevatedButton(
+                onPressed: _registerUser,
+                child: Text('Register'),
               ),
-            ],
-          );
-        },
-      );
-    } catch (e) {
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text('Registration Failed'),
-            content: Text(e.toString()),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Text('OK'),
-              ),
-            ],
-          );
-        },
-      );
-    }
-  }
-}, child: Text('Register')),
               SizedBox(height: 16),
               TextButton(
                 onPressed: () {
@@ -137,8 +169,6 @@ onPressed: () async {
                 },
                 child: Text('Already have an account? Login here'),
               ),
-
-
             ],
           ),
         ),
