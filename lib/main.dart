@@ -65,7 +65,7 @@ class MenuPage extends StatelessWidget {
                 Navigator.pushNamed(context, '/map');
               },
               icon: Icon(Icons.map_rounded),
-              label: Text('Map'),
+              label: Text('Map of Users'),
             ),
             ElevatedButton.icon(
               onPressed: () {
@@ -79,14 +79,14 @@ class MenuPage extends StatelessWidget {
                 Navigator.pushNamed(context, '/video');
               },
               icon: Icon(Icons.video_camera_back),
-              label: Text('Upload Video'),
+              label: Text('Upload Video/lesson'),
             ),
             ElevatedButton.icon(
               onPressed: () {
                 Navigator.pushNamed(context, '/metronome');
               },
               icon: Icon(Icons.settings),
-              label: Text('Settings'),
+              label: Text('Metronome'),
             ),
           ],
         ),

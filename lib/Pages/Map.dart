@@ -31,10 +31,11 @@ void getUsersLocation() {
 
       users.forEach((key, value) {
         if (value['latitude'] != null && value['longitude'] != null) {
+          String name = value['name'];
           double latitude = value['latitude'];
           double longitude = value['longitude'];
           LatLng position = LatLng(latitude, longitude);
-          _addMarker(position);
+          _addMarker(position,name);
 
           // Do something with the latitude and longitude values
           print('User: $key - Latitude: $latitude, Longitude: $longitude');
@@ -47,13 +48,13 @@ void getUsersLocation() {
   });
 }
 
-  void _addMarker(LatLng position) {
+  void _addMarker(LatLng position, String name) {
     setState(() {
       _markers.add(
         Marker(
           markerId: MarkerId(position.toString()),
           position: position,
-          infoWindow: InfoWindow(title: 'User Location'),
+          infoWindow: InfoWindow(title: name),
         ),
       );
     });
@@ -67,7 +68,7 @@ void getUsersLocation() {
       ),
       body: GoogleMap(
         initialCameraPosition: CameraPosition(
-          target: LatLng(37.7749, -122.4194),
+          target: LatLng(40.7749, -8.4194),
           zoom: 10,
         ),
         markers: _markers,
