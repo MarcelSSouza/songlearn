@@ -18,25 +18,35 @@ class _MapScreenState extends State<MapScreen> {
   @override
   void initState() {
     super.initState();
-    _getUserLocations();
+    getUsersLocation();
   }
 
-void _getUserLocations() {
-  FirebaseFirestore.instance
-      .collection('users')
-      .get()
-      .then((QuerySnapshot snapshot) {
-    if (snapshot.size > 0) {
-      snapshot.docs.forEach((DocumentSnapshot doc) {
-        Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
-        double latitude = data['latitude'].toDouble();
-        double longitude = data['longitude'].toDouble();
+void getUsersLocation() {
+  DatabaseReference usersRef = FirebaseDatabase.instance.reference().child('users');
 
-        _addMarker(LatLng(latitude, longitude));
+  usersRef.once().then((DatabaseEvent event) {
+    DataSnapshot snapshot = event.snapshot;
+    if (snapshot.value != null) {
+      Map<dynamic, dynamic> users = Map<dynamic, dynamic>.from(snapshot.value as Map<dynamic, dynamic>);
+
+      users.forEach((key, value) {
+        if (value['latitude'] != null && value['longitude'] != null) {
+          double latitude = value['latitude'];
+          double longitude = value['longitude'];
+          LatLng position = LatLng(latitude, longitude);
+          _addMarker(position);
+
+          // Do something with the latitude and longitude values
+          print('User: $key - Latitude: $latitude, Longitude: $longitude');
+        }
       });
     }
+  }).catchError((error) {
+    // Handle error
+    print('Failed to retrieve user locations: $error');
   });
 }
+
   void _addMarker(LatLng position) {
     setState(() {
       _markers.add(
