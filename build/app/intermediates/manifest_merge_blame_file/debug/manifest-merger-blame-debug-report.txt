@@ -1,0 +1,387 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.songlearn"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+9        android:targetSdkVersion="33" />
+10    <!--
+11         The INTERNET permission is required for development. Specifically,
+12         the Flutter tool needs it to communicate with the running application
+13         to allow setting breakpoints, to provide hot reload, etc.
+14    -->
+15    <uses-permission android:name="android.permission.INTERNET" />
+15-->C:\Users\Marcel Santos\Desktop\Flutter\songlearn\android\app\src\main\AndroidManifest.xml:7:5-67
+15-->C:\Users\Marcel Santos\Desktop\Flutter\songlearn\android\app\src\main\AndroidManifest.xml:7:22-64
+16    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+16-->C:\Users\Marcel Santos\Desktop\Flutter\songlearn\android\app\src\main\AndroidManifest.xml:2:5-79
+16-->C:\Users\Marcel Santos\Desktop\Flutter\songlearn\android\app\src\main\AndroidManifest.xml:2:22-76
+17    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+17-->C:\Users\Marcel Santos\Desktop\Flutter\songlearn\android\app\src\main\AndroidManifest.xml:3:5-81
+17-->C:\Users\Marcel Santos\Desktop\Flutter\songlearn\android\app\src\main\AndroidManifest.xml:3:22-78
+18    <uses-permission android:name="android.permission.CAMERA" />
+18-->C:\Users\Marcel Santos\Desktop\Flutter\songlearn\android\app\src\main\AndroidManifest.xml:4:5-65
+18-->C:\Users\Marcel Santos\Desktop\Flutter\songlearn\android\app\src\main\AndroidManifest.xml:4:22-62
+19    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+19-->C:\Users\Marcel Santos\Desktop\Flutter\songlearn\android\app\src\main\AndroidManifest.xml:5:5-80
+19-->C:\Users\Marcel Santos\Desktop\Flutter\songlearn\android\app\src\main\AndroidManifest.xml:5:22-78
+20    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+20-->C:\Users\Marcel Santos\Desktop\Flutter\songlearn\android\app\src\main\AndroidManifest.xml:6:5-79
+20-->C:\Users\Marcel Santos\Desktop\Flutter\songlearn\android\app\src\main\AndroidManifest.xml:6:22-77
+21
+22    <uses-feature android:name="android.hardware.camera" />
+22-->C:\Users\Marcel Santos\Desktop\Flutter\songlearn\android\app\src\main\AndroidManifest.xml:9:5-60
+22-->C:\Users\Marcel Santos\Desktop\Flutter\songlearn\android\app\src\main\AndroidManifest.xml:9:19-57
+23    <uses-feature android:name="android.hardware.camera.autofocus" />
+23-->C:\Users\Marcel Santos\Desktop\Flutter\songlearn\android\app\src\main\AndroidManifest.xml:10:5-70
+23-->C:\Users\Marcel Santos\Desktop\Flutter\songlearn\android\app\src\main\AndroidManifest.xml:10:19-67
+24
+25    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+25-->[:geolocator_android] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-77
+25-->[:geolocator_android] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:9:22-74
+26
+27    <queries>
+27-->[:file_picker] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\file_picker\intermediates\merged_manifest\debug\AndroidManifest.xml:11:5-17:15
+28        <intent>
+28-->[:file_picker] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\file_picker\intermediates\merged_manifest\debug\AndroidManifest.xml:12:9-16:18
+29            <action android:name="android.intent.action.GET_CONTENT" />
+29-->[:file_picker] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\file_picker\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-72
+29-->[:file_picker] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\file_picker\intermediates\merged_manifest\debug\AndroidManifest.xml:13:21-69
+30
+31            <data android:mimeType="*/*" />
+31-->[:file_picker] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\file_picker\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-44
+31-->[:file_picker] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\file_picker\intermediates\merged_manifest\debug\AndroidManifest.xml:15:19-41
+32        </intent>
+33        <!-- Needs to be explicitly declared on Android R+ -->
+34        <package android:name="com.google.android.apps.maps" />
+34-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\d7f7973f000d5c8945a05a4db1417b66\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:33:9-64
+34-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\d7f7973f000d5c8945a05a4db1417b66\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:33:18-61
+35    </queries>
+36
+37    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+37-->[:camera_android] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\camera_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:5-71
+37-->[:camera_android] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\camera_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:22-68
+38    <uses-permission android:name="android.permission.VIBRATE" />
+38-->[:vibration] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\vibration\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-66
+38-->[:vibration] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\vibration\intermediates\merged_manifest\debug\AndroidManifest.xml:9:22-63
+39    <uses-permission android:name="android.permission.FLASHLIGHT" />
+39-->[:qrscan] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\qrscan\intermediates\merged_manifest\debug\AndroidManifest.xml:11:5-69
+39-->[:qrscan] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\qrscan\intermediates\merged_manifest\debug\AndroidManifest.xml:11:22-66
+40    <uses-permission android:name="android.permission.WAKE_LOCK" />
+40-->[:qrscan] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\qrscan\intermediates\merged_manifest\debug\AndroidManifest.xml:16:5-68
+40-->[:qrscan] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\qrscan\intermediates\merged_manifest\debug\AndroidManifest.xml:16:22-65
+41    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+41-->[com.google.firebase:firebase-auth:22.0.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\addd1e7d7380e6c086f46a0c78155c8a\transformed\jetified-firebase-auth-22.0.0\AndroidManifest.xml:26:5-79
+41-->[com.google.firebase:firebase-auth:22.0.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\addd1e7d7380e6c086f46a0c78155c8a\transformed\jetified-firebase-auth-22.0.0\AndroidManifest.xml:26:22-76
+42
+43    <uses-feature
+43-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\d7f7973f000d5c8945a05a4db1417b66\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:26:5-28:35
+44        android:glEsVersion="0x00020000"
+44-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\d7f7973f000d5c8945a05a4db1417b66\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:27:9-41
+45        android:required="true" />
+45-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\d7f7973f000d5c8945a05a4db1417b66\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:28:9-32
+46
+47    <permission
+47-->[androidx.core:core:1.9.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\c2aff38445ebad8ddeaa989ecf50f56e\transformed\core-1.9.0\AndroidManifest.xml:22:5-24:47
+48        android:name="com.example.songlearn.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+48-->[androidx.core:core:1.9.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\c2aff38445ebad8ddeaa989ecf50f56e\transformed\core-1.9.0\AndroidManifest.xml:23:9-81
+49        android:protectionLevel="signature" />
+49-->[androidx.core:core:1.9.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\c2aff38445ebad8ddeaa989ecf50f56e\transformed\core-1.9.0\AndroidManifest.xml:24:9-44
+50
+51    <uses-permission android:name="com.example.songlearn.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+51-->[androidx.core:core:1.9.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\c2aff38445ebad8ddeaa989ecf50f56e\transformed\core-1.9.0\AndroidManifest.xml:26:5-97
+51-->[androidx.core:core:1.9.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\c2aff38445ebad8ddeaa989ecf50f56e\transformed\core-1.9.0\AndroidManifest.xml:26:22-94
+52
+53    <application
+54        android:name="io.flutter.app.FlutterMultiDexApplication"
+55        android:allowBackup="true"
+55-->[com.github.leyan95:android-zxingLibrary:0.1.4-PRE] C:\Users\Marcel Santos\.gradle\caches\transforms-3\0c49cfebca5e1ff7478aac156ccc529e\transformed\jetified-android-zxingLibrary-0.1.4-PRE\AndroidManifest.xml:13:18-44
+56        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+56-->[androidx.core:core:1.9.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\c2aff38445ebad8ddeaa989ecf50f56e\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
+57        android:debuggable="true"
+58        android:icon="@mipmap/ic_launcher"
+59        android:label="songlearn" >
+60        <meta-data
+61            android:name="com.google.android.geo.API_KEY"
+62            android:value="AIzaSyBoQ10LWn5ZJ9dEAw0m1J3yJISibbakY38" />
+63
+64        <activity
+65            android:name="com.example.songlearn.MainActivity"
+66            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+67            android:exported="true"
+68            android:hardwareAccelerated="true"
+69            android:launchMode="singleTop"
+70            android:theme="@style/LaunchTheme"
+71            android:windowSoftInputMode="adjustResize" >
+72
+73            <!--
+74                 Specifies an Android theme to apply to this Activity as soon as
+75                 the Android process has started. This theme is visible to the user
+76                 while the Flutter UI initializes. After that, this theme continues
+77                 to determine the Window background behind the Flutter UI.
+78            -->
+79            <meta-data
+80                android:name="io.flutter.embedding.android.NormalTheme"
+81                android:resource="@style/NormalTheme" />
+82
+83            <intent-filter>
+84                <action android:name="android.intent.action.MAIN" />
+85
+86                <category android:name="android.intent.category.LAUNCHER" />
+87            </intent-filter>
+88        </activity>
+89        <!--
+90             Don't delete the meta-data below.
+91             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+92        -->
+93        <meta-data
+93-->[:qrscan] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\qrscan\intermediates\merged_manifest\debug\AndroidManifest.xml:25:13-27:37
+94            android:name="flutterEmbedding"
+94-->[:qrscan] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\qrscan\intermediates\merged_manifest\debug\AndroidManifest.xml:26:17-48
+95            android:value="2" />
+95-->[:qrscan] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\qrscan\intermediates\merged_manifest\debug\AndroidManifest.xml:27:17-34
+96
+97        <service
+97-->[:firebase_database] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\firebase_database\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-14:19
+98            android:name="com.google.firebase.components.ComponentDiscoveryService"
+98-->[:firebase_database] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\firebase_database\intermediates\merged_manifest\debug\AndroidManifest.xml:10:18-89
+99            android:directBootAware="true"
+99-->[com.google.firebase:firebase-common:20.3.2] C:\Users\Marcel Santos\.gradle\caches\transforms-3\6e10d488ebcc23afefc866560645fd3c\transformed\jetified-firebase-common-20.3.2\AndroidManifest.xml:34:13-43
+100            android:exported="false" >
+100-->[com.google.firebase:firebase-auth:22.0.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\addd1e7d7380e6c086f46a0c78155c8a\transformed\jetified-firebase-auth-22.0.0\AndroidManifest.xml:68:13-37
+101            <meta-data
+101-->[:firebase_database] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\firebase_database\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-13:85
+102                android:name="com.google.firebase.components:io.flutter.plugins.firebase.database.FlutterFirebaseAppRegistrar"
+102-->[:firebase_database] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\firebase_database\intermediates\merged_manifest\debug\AndroidManifest.xml:12:17-127
+103                android:value="com.google.firebase.components.ComponentRegistrar" />
+103-->[:firebase_database] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\firebase_database\intermediates\merged_manifest\debug\AndroidManifest.xml:13:17-82
+104            <meta-data
+104-->[:cloud_firestore] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\cloud_firestore\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-13:85
+105                android:name="com.google.firebase.components:io.flutter.plugins.firebase.firestore.FlutterFirebaseFirestoreRegistrar"
+105-->[:cloud_firestore] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\cloud_firestore\intermediates\merged_manifest\debug\AndroidManifest.xml:12:17-134
+106                android:value="com.google.firebase.components.ComponentRegistrar" />
+106-->[:cloud_firestore] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\cloud_firestore\intermediates\merged_manifest\debug\AndroidManifest.xml:13:17-82
+107            <meta-data
+107-->[:firebase_auth] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-13:85
+108                android:name="com.google.firebase.components:io.flutter.plugins.firebase.auth.FlutterFirebaseAuthRegistrar"
+108-->[:firebase_auth] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:12:17-124
+109                android:value="com.google.firebase.components.ComponentRegistrar" />
+109-->[:firebase_auth] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:13:17-82
+110            <meta-data
+110-->[:firebase_storage] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\firebase_storage\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-13:85
+111                android:name="com.google.firebase.components:io.flutter.plugins.firebase.storage.FlutterFirebaseAppRegistrar"
+111-->[:firebase_storage] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\firebase_storage\intermediates\merged_manifest\debug\AndroidManifest.xml:12:17-126
+112                android:value="com.google.firebase.components.ComponentRegistrar" />
+112-->[:firebase_storage] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\firebase_storage\intermediates\merged_manifest\debug\AndroidManifest.xml:13:17-82
+113            <meta-data
+113-->[:firebase_core] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-13:85
+114                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar"
+114-->[:firebase_core] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:12:17-124
+115                android:value="com.google.firebase.components.ComponentRegistrar" />
+115-->[:firebase_core] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:13:17-82
+116            <meta-data
+116-->[com.google.firebase:firebase-auth:22.0.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\addd1e7d7380e6c086f46a0c78155c8a\transformed\jetified-firebase-auth-22.0.0\AndroidManifest.xml:69:13-71:85
+117                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+117-->[com.google.firebase:firebase-auth:22.0.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\addd1e7d7380e6c086f46a0c78155c8a\transformed\jetified-firebase-auth-22.0.0\AndroidManifest.xml:70:17-109
+118                android:value="com.google.firebase.components.ComponentRegistrar" />
+118-->[com.google.firebase:firebase-auth:22.0.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\addd1e7d7380e6c086f46a0c78155c8a\transformed\jetified-firebase-auth-22.0.0\AndroidManifest.xml:71:17-82
+119            <meta-data
+119-->[com.google.firebase:firebase-firestore:24.6.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\72364d1d1285fb1570adb110caaa4c93\transformed\jetified-firebase-firestore-24.6.0\AndroidManifest.xml:19:13-21:85
+120                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
+120-->[com.google.firebase:firebase-firestore:24.6.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\72364d1d1285fb1570adb110caaa4c93\transformed\jetified-firebase-firestore-24.6.0\AndroidManifest.xml:20:17-111
+121                android:value="com.google.firebase.components.ComponentRegistrar" />
+121-->[com.google.firebase:firebase-firestore:24.6.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\72364d1d1285fb1570adb110caaa4c93\transformed\jetified-firebase-firestore-24.6.0\AndroidManifest.xml:21:17-82
+122            <meta-data
+122-->[com.google.firebase:firebase-storage:20.2.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\4d8eaf5f0294d8acedc8834ad7d6d925\transformed\jetified-firebase-storage-20.2.0\AndroidManifest.xml:32:13-34:85
+123                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
+123-->[com.google.firebase:firebase-storage:20.2.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\4d8eaf5f0294d8acedc8834ad7d6d925\transformed\jetified-firebase-storage-20.2.0\AndroidManifest.xml:33:17-107
+124                android:value="com.google.firebase.components.ComponentRegistrar" />
+124-->[com.google.firebase:firebase-storage:20.2.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\4d8eaf5f0294d8acedc8834ad7d6d925\transformed\jetified-firebase-storage-20.2.0\AndroidManifest.xml:34:17-82
+125            <meta-data
+125-->[com.google.firebase:firebase-database:20.2.1] C:\Users\Marcel Santos\.gradle\caches\transforms-3\0f307d07c73d747fc02eba01c35d5581\transformed\jetified-firebase-database-20.2.1\AndroidManifest.xml:31:13-33:85
+126                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
+126-->[com.google.firebase:firebase-database:20.2.1] C:\Users\Marcel Santos\.gradle\caches\transforms-3\0f307d07c73d747fc02eba01c35d5581\transformed\jetified-firebase-database-20.2.1\AndroidManifest.xml:32:17-109
+127                android:value="com.google.firebase.components.ComponentRegistrar" />
+127-->[com.google.firebase:firebase-database:20.2.1] C:\Users\Marcel Santos\.gradle\caches\transforms-3\0f307d07c73d747fc02eba01c35d5581\transformed\jetified-firebase-database-20.2.1\AndroidManifest.xml:33:17-82
+128        </service>
+129        <service
+129-->[:geolocator_android] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:9-16:56
+130            android:name="com.baseflow.geolocator.GeolocatorLocationService"
+130-->[:geolocator_android] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-77
+131            android:enabled="true"
+131-->[:geolocator_android] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-35
+132            android:exported="false"
+132-->[:geolocator_android] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-37
+133            android:foregroundServiceType="location" />
+133-->[:geolocator_android] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:16:13-53
+134
+135        <activity
+135-->[:url_launcher_android] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-13:74
+136            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
+136-->[:url_launcher_android] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-74
+137            android:exported="false"
+137-->[:url_launcher_android] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-37
+138            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+138-->[:url_launcher_android] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-71
+139        <activity
+139-->[:qrscan] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\qrscan\intermediates\merged_manifest\debug\AndroidManifest.xml:22:9-28:20
+140            android:name="com.shinow.qrscan.SecondActivity"
+140-->[:qrscan] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\qrscan\intermediates\merged_manifest\debug\AndroidManifest.xml:23:13-60
+141            android:theme="@style/Theme.AppCompat.NoActionBar" >
+141-->[:qrscan] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\qrscan\intermediates\merged_manifest\debug\AndroidManifest.xml:24:13-63
+142            <meta-data
+142-->[:qrscan] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\qrscan\intermediates\merged_manifest\debug\AndroidManifest.xml:25:13-27:37
+143                android:name="flutterEmbedding"
+143-->[:qrscan] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\qrscan\intermediates\merged_manifest\debug\AndroidManifest.xml:26:17-48
+144                android:value="2" />
+144-->[:qrscan] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\qrscan\intermediates\merged_manifest\debug\AndroidManifest.xml:27:17-34
+145        </activity>
+146        <activity
+146-->[com.google.firebase:firebase-auth:22.0.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\addd1e7d7380e6c086f46a0c78155c8a\transformed\jetified-firebase-auth-22.0.0\AndroidManifest.xml:29:9-46:20
+147            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
+147-->[com.google.firebase:firebase-auth:22.0.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\addd1e7d7380e6c086f46a0c78155c8a\transformed\jetified-firebase-auth-22.0.0\AndroidManifest.xml:30:13-80
+148            android:excludeFromRecents="true"
+148-->[com.google.firebase:firebase-auth:22.0.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\addd1e7d7380e6c086f46a0c78155c8a\transformed\jetified-firebase-auth-22.0.0\AndroidManifest.xml:31:13-46
+149            android:exported="true"
+149-->[com.google.firebase:firebase-auth:22.0.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\addd1e7d7380e6c086f46a0c78155c8a\transformed\jetified-firebase-auth-22.0.0\AndroidManifest.xml:32:13-36
+150            android:launchMode="singleTask"
+150-->[com.google.firebase:firebase-auth:22.0.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\addd1e7d7380e6c086f46a0c78155c8a\transformed\jetified-firebase-auth-22.0.0\AndroidManifest.xml:33:13-44
+151            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+151-->[com.google.firebase:firebase-auth:22.0.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\addd1e7d7380e6c086f46a0c78155c8a\transformed\jetified-firebase-auth-22.0.0\AndroidManifest.xml:34:13-72
+152            <intent-filter>
+152-->[com.google.firebase:firebase-auth:22.0.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\addd1e7d7380e6c086f46a0c78155c8a\transformed\jetified-firebase-auth-22.0.0\AndroidManifest.xml:35:13-45:29
+153                <action android:name="android.intent.action.VIEW" />
+153-->[com.google.firebase:firebase-auth:22.0.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\addd1e7d7380e6c086f46a0c78155c8a\transformed\jetified-firebase-auth-22.0.0\AndroidManifest.xml:36:17-69
+153-->[com.google.firebase:firebase-auth:22.0.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\addd1e7d7380e6c086f46a0c78155c8a\transformed\jetified-firebase-auth-22.0.0\AndroidManifest.xml:36:25-66
+154
+155                <category android:name="android.intent.category.DEFAULT" />
+155-->[com.google.firebase:firebase-auth:22.0.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\addd1e7d7380e6c086f46a0c78155c8a\transformed\jetified-firebase-auth-22.0.0\AndroidManifest.xml:38:17-76
+155-->[com.google.firebase:firebase-auth:22.0.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\addd1e7d7380e6c086f46a0c78155c8a\transformed\jetified-firebase-auth-22.0.0\AndroidManifest.xml:38:27-73
+156                <category android:name="android.intent.category.BROWSABLE" />
+156-->[com.google.firebase:firebase-auth:22.0.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\addd1e7d7380e6c086f46a0c78155c8a\transformed\jetified-firebase-auth-22.0.0\AndroidManifest.xml:39:17-78
+156-->[com.google.firebase:firebase-auth:22.0.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\addd1e7d7380e6c086f46a0c78155c8a\transformed\jetified-firebase-auth-22.0.0\AndroidManifest.xml:39:27-75
+157
+158                <data
+158-->[:file_picker] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\file_picker\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-44
+159                    android:host="firebase.auth"
+160                    android:path="/"
+161                    android:scheme="genericidp" />
+162            </intent-filter>
+163        </activity>
+164        <activity
+164-->[com.google.firebase:firebase-auth:22.0.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\addd1e7d7380e6c086f46a0c78155c8a\transformed\jetified-firebase-auth-22.0.0\AndroidManifest.xml:47:9-64:20
+165            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
+165-->[com.google.firebase:firebase-auth:22.0.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\addd1e7d7380e6c086f46a0c78155c8a\transformed\jetified-firebase-auth-22.0.0\AndroidManifest.xml:48:13-79
+166            android:excludeFromRecents="true"
+166-->[com.google.firebase:firebase-auth:22.0.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\addd1e7d7380e6c086f46a0c78155c8a\transformed\jetified-firebase-auth-22.0.0\AndroidManifest.xml:49:13-46
+167            android:exported="true"
+167-->[com.google.firebase:firebase-auth:22.0.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\addd1e7d7380e6c086f46a0c78155c8a\transformed\jetified-firebase-auth-22.0.0\AndroidManifest.xml:50:13-36
+168            android:launchMode="singleTask"
+168-->[com.google.firebase:firebase-auth:22.0.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\addd1e7d7380e6c086f46a0c78155c8a\transformed\jetified-firebase-auth-22.0.0\AndroidManifest.xml:51:13-44
+169            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+169-->[com.google.firebase:firebase-auth:22.0.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\addd1e7d7380e6c086f46a0c78155c8a\transformed\jetified-firebase-auth-22.0.0\AndroidManifest.xml:52:13-72
+170            <intent-filter>
+170-->[com.google.firebase:firebase-auth:22.0.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\addd1e7d7380e6c086f46a0c78155c8a\transformed\jetified-firebase-auth-22.0.0\AndroidManifest.xml:53:13-63:29
+171                <action android:name="android.intent.action.VIEW" />
+171-->[com.google.firebase:firebase-auth:22.0.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\addd1e7d7380e6c086f46a0c78155c8a\transformed\jetified-firebase-auth-22.0.0\AndroidManifest.xml:36:17-69
+171-->[com.google.firebase:firebase-auth:22.0.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\addd1e7d7380e6c086f46a0c78155c8a\transformed\jetified-firebase-auth-22.0.0\AndroidManifest.xml:36:25-66
+172
+173                <category android:name="android.intent.category.DEFAULT" />
+173-->[com.google.firebase:firebase-auth:22.0.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\addd1e7d7380e6c086f46a0c78155c8a\transformed\jetified-firebase-auth-22.0.0\AndroidManifest.xml:38:17-76
+173-->[com.google.firebase:firebase-auth:22.0.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\addd1e7d7380e6c086f46a0c78155c8a\transformed\jetified-firebase-auth-22.0.0\AndroidManifest.xml:38:27-73
+174                <category android:name="android.intent.category.BROWSABLE" />
+174-->[com.google.firebase:firebase-auth:22.0.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\addd1e7d7380e6c086f46a0c78155c8a\transformed\jetified-firebase-auth-22.0.0\AndroidManifest.xml:39:17-78
+174-->[com.google.firebase:firebase-auth:22.0.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\addd1e7d7380e6c086f46a0c78155c8a\transformed\jetified-firebase-auth-22.0.0\AndroidManifest.xml:39:27-75
+175
+176                <data
+176-->[:file_picker] C:\Users\Marcel Santos\Desktop\Flutter\songlearn\build\file_picker\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-44
+177                    android:host="firebase.auth"
+178                    android:path="/"
+179                    android:scheme="recaptcha" />
+180            </intent-filter>
+181        </activity>
+182
+183        <uses-library
+183-->[androidx.window:window:1.0.0-beta04] C:\Users\Marcel Santos\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
+184            android:name="androidx.window.extensions"
+184-->[androidx.window:window:1.0.0-beta04] C:\Users\Marcel Santos\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
+185            android:required="false" />
+185-->[androidx.window:window:1.0.0-beta04] C:\Users\Marcel Santos\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
+186        <uses-library
+186-->[androidx.window:window:1.0.0-beta04] C:\Users\Marcel Santos\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
+187            android:name="androidx.window.sidecar"
+187-->[androidx.window:window:1.0.0-beta04] C:\Users\Marcel Santos\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
+188            android:required="false" />
+188-->[androidx.window:window:1.0.0-beta04] C:\Users\Marcel Santos\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
+189
+190        <provider
+190-->[com.google.firebase:firebase-common:20.3.2] C:\Users\Marcel Santos\.gradle\caches\transforms-3\6e10d488ebcc23afefc866560645fd3c\transformed\jetified-firebase-common-20.3.2\AndroidManifest.xml:25:9-30:39
+191            android:name="com.google.firebase.provider.FirebaseInitProvider"
+191-->[com.google.firebase:firebase-common:20.3.2] C:\Users\Marcel Santos\.gradle\caches\transforms-3\6e10d488ebcc23afefc866560645fd3c\transformed\jetified-firebase-common-20.3.2\AndroidManifest.xml:26:13-77
+192            android:authorities="com.example.songlearn.firebaseinitprovider"
+192-->[com.google.firebase:firebase-common:20.3.2] C:\Users\Marcel Santos\.gradle\caches\transforms-3\6e10d488ebcc23afefc866560645fd3c\transformed\jetified-firebase-common-20.3.2\AndroidManifest.xml:27:13-72
+193            android:directBootAware="true"
+193-->[com.google.firebase:firebase-common:20.3.2] C:\Users\Marcel Santos\.gradle\caches\transforms-3\6e10d488ebcc23afefc866560645fd3c\transformed\jetified-firebase-common-20.3.2\AndroidManifest.xml:28:13-43
+194            android:exported="false"
+194-->[com.google.firebase:firebase-common:20.3.2] C:\Users\Marcel Santos\.gradle\caches\transforms-3\6e10d488ebcc23afefc866560645fd3c\transformed\jetified-firebase-common-20.3.2\AndroidManifest.xml:29:13-37
+195            android:initOrder="100" />
+195-->[com.google.firebase:firebase-common:20.3.2] C:\Users\Marcel Santos\.gradle\caches\transforms-3\6e10d488ebcc23afefc866560645fd3c\transformed\jetified-firebase-common-20.3.2\AndroidManifest.xml:30:13-36
+196
+197        <activity
+197-->[pub.devrel:easypermissions:3.0.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\372b9cbc21c3835907881f03440fa116\transformed\jetified-easypermissions-3.0.0\AndroidManifest.xml:12:9-16:66
+198            android:name="pub.devrel.easypermissions.AppSettingsDialogHolderActivity"
+198-->[pub.devrel:easypermissions:3.0.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\372b9cbc21c3835907881f03440fa116\transformed\jetified-easypermissions-3.0.0\AndroidManifest.xml:13:13-86
+199            android:exported="false"
+199-->[pub.devrel:easypermissions:3.0.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\372b9cbc21c3835907881f03440fa116\transformed\jetified-easypermissions-3.0.0\AndroidManifest.xml:14:13-37
+200            android:label=""
+200-->[pub.devrel:easypermissions:3.0.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\372b9cbc21c3835907881f03440fa116\transformed\jetified-easypermissions-3.0.0\AndroidManifest.xml:15:13-29
+201            android:theme="@style/EasyPermissions.Transparent" />
+201-->[pub.devrel:easypermissions:3.0.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\372b9cbc21c3835907881f03440fa116\transformed\jetified-easypermissions-3.0.0\AndroidManifest.xml:16:13-63
+202        <activity
+202-->[com.github.leyan95:android-zxingLibrary:0.1.4-PRE] C:\Users\Marcel Santos\.gradle\caches\transforms-3\0c49cfebca5e1ff7478aac156ccc529e\transformed\jetified-android-zxingLibrary-0.1.4-PRE\AndroidManifest.xml:14:9-19:63
+203            android:name="com.uuzuche.lib_zxing.activity.CaptureActivity"
+203-->[com.github.leyan95:android-zxingLibrary:0.1.4-PRE] C:\Users\Marcel Santos\.gradle\caches\transforms-3\0c49cfebca5e1ff7478aac156ccc529e\transformed\jetified-android-zxingLibrary-0.1.4-PRE\AndroidManifest.xml:15:13-74
+204            android:configChanges="orientation|keyboardHidden"
+204-->[com.github.leyan95:android-zxingLibrary:0.1.4-PRE] C:\Users\Marcel Santos\.gradle\caches\transforms-3\0c49cfebca5e1ff7478aac156ccc529e\transformed\jetified-android-zxingLibrary-0.1.4-PRE\AndroidManifest.xml:16:13-63
+205            android:screenOrientation="portrait"
+205-->[com.github.leyan95:android-zxingLibrary:0.1.4-PRE] C:\Users\Marcel Santos\.gradle\caches\transforms-3\0c49cfebca5e1ff7478aac156ccc529e\transformed\jetified-android-zxingLibrary-0.1.4-PRE\AndroidManifest.xml:17:13-49
+206            android:theme="@style/Theme.AppCompat.NoActionBar"
+206-->[com.github.leyan95:android-zxingLibrary:0.1.4-PRE] C:\Users\Marcel Santos\.gradle\caches\transforms-3\0c49cfebca5e1ff7478aac156ccc529e\transformed\jetified-android-zxingLibrary-0.1.4-PRE\AndroidManifest.xml:18:13-63
+207            android:windowSoftInputMode="stateAlwaysHidden" /> <!-- Needs to be explicitly declared on P+ -->
+207-->[com.github.leyan95:android-zxingLibrary:0.1.4-PRE] C:\Users\Marcel Santos\.gradle\caches\transforms-3\0c49cfebca5e1ff7478aac156ccc529e\transformed\jetified-android-zxingLibrary-0.1.4-PRE\AndroidManifest.xml:19:13-60
+208        <uses-library
+208-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\d7f7973f000d5c8945a05a4db1417b66\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:39:9-41:40
+209            android:name="org.apache.http.legacy"
+209-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\d7f7973f000d5c8945a05a4db1417b66\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:40:13-50
+210            android:required="false" />
+210-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\d7f7973f000d5c8945a05a4db1417b66\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:41:13-37
+211
+212        <activity
+212-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\781e5567158e59d38ee2b89930f9808b\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:20:9-22:45
+213            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+213-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\781e5567158e59d38ee2b89930f9808b\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:20:19-85
+214            android:exported="false"
+214-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\781e5567158e59d38ee2b89930f9808b\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:22:19-43
+215            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+215-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\781e5567158e59d38ee2b89930f9808b\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:21:19-78
+216
+217        <meta-data
+217-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\58aa1384bde170d075503b845cfcf44c\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:21:9-23:69
+218            android:name="com.google.android.gms.version"
+218-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\58aa1384bde170d075503b845cfcf44c\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:22:13-58
+219            android:value="@integer/google_play_services_version" />
+219-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\Marcel Santos\.gradle\caches\transforms-3\58aa1384bde170d075503b845cfcf44c\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:23:13-66
+220
+221        <provider
+221-->[com.squareup.picasso:picasso:2.71828] C:\Users\Marcel Santos\.gradle\caches\transforms-3\d2464c428637d26d9012f9eb5ba34441\transformed\jetified-picasso-2.71828\AndroidManifest.xml:8:9-11:40
+222            android:name="com.squareup.picasso.PicassoProvider"
+222-->[com.squareup.picasso:picasso:2.71828] C:\Users\Marcel Santos\.gradle\caches\transforms-3\d2464c428637d26d9012f9eb5ba34441\transformed\jetified-picasso-2.71828\AndroidManifest.xml:9:13-64
+223            android:authorities="com.example.songlearn.com.squareup.picasso"
+223-->[com.squareup.picasso:picasso:2.71828] C:\Users\Marcel Santos\.gradle\caches\transforms-3\d2464c428637d26d9012f9eb5ba34441\transformed\jetified-picasso-2.71828\AndroidManifest.xml:10:13-72
+224            android:exported="false" />
+224-->[com.squareup.picasso:picasso:2.71828] C:\Users\Marcel Santos\.gradle\caches\transforms-3\d2464c428637d26d9012f9eb5ba34441\transformed\jetified-picasso-2.71828\AndroidManifest.xml:11:13-37
+225    </application>
+226
+227</manifest>
