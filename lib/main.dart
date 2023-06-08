@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:songlearn/Pages/Register.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'Pages/Login.dart';
+import 'Pages/LyricsPage.dart';
 import 'Pages/Map.dart';
 import 'Pages/QRCodeScannerPage.dart';
 import 'Pages/VideoListPage.dart';
@@ -37,6 +38,7 @@ class LearningMusicApp extends StatelessWidget {
         '/videoList': (context) => VideoListPage(),
         '/QRCodeScanner': (context) => QRCodeScannerPage(),
         '/metronome': (context) => MetronomeScreen(),
+        '/lyrics': (context) => LyricsPage(),
       },
     );
   }
@@ -88,6 +90,13 @@ class MenuPage extends StatelessWidget {
               icon: Icon(Icons.settings),
               label: Text('Metronome'),
             ),
+             ElevatedButton.icon(
+              onPressed: () {
+                Navigator.pushNamed(context, '/lyrics');
+              },
+              icon: Icon(Icons.sign_language),
+              label: Text('Lyrics'),
+            )
           ],
         ),
       ),
