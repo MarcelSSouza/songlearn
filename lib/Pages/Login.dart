@@ -102,6 +102,23 @@ class _LoginState extends State<Login> {
                 },
                 child: Text('Login'),
               ),
+              SizedBox(height: 16),
+              GestureDetector(
+                onTap: () {
+                  // Navigate to the registration page
+                  Navigator.pushNamed(context, '/register');
+                },
+                child: Container(
+                  color: Colors.transparent,
+                  child: Text(
+                    'Dont have an account? Register here',
+                    style: TextStyle(
+                      color: Colors.blue,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),

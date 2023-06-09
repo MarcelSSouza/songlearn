@@ -11,22 +11,39 @@ class _QRCodeScannerPageState extends State<QRCodeScannerPage> {
   String? result = '';
 
   Future<void> _scanQRCode() async {
-    String? cameraScanResult = await scanner.scan();
+    try {
+      String? cameraScanResult = await scanner.scan();
+      Uri cameraScanResultUri = Uri.parse(cameraScanResult!);
 
-    Uri cameraScanResultUri = Uri.parse(cameraScanResult!);
+      setState(() {
+        result = cameraScanResult;
+      });
 
-    setState(() {
-      result = cameraScanResult;
-    });
-
- 
-    _launchURL(cameraScanResultUri);
-    
+      _launchURL(cameraScanResultUri);
+    } catch (e) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Erro'),
+            content: Text('Ocorreu um erro ao escanear o QR code: $e'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context); // Fechar o diálogo de erro
+                  Navigator.pop(context); // Voltar à página anterior
+                },
+                child: Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+    }
   }
 
   Future<void> _launchURL(Uri url) async {
-      await launchUrl(url );
-
+    await launchUrl(url);
   }
 
   @override

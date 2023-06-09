@@ -18,18 +18,38 @@ void main() async {
   runApp(LearningMusicApp());
 }
 
+class LearningMusicApp extends StatefulWidget {
+  @override
+  _LearningMusicAppState createState() => _LearningMusicAppState();
+}
 
-class LearningMusicApp extends StatelessWidget {
+class _LearningMusicAppState extends State<LearningMusicApp> {
+  int _selectedIndex = 0;
+
+  final List<Widget> _pages = [
+    Login(),
+    MenuPage(),
+    MapScreen(),
+    VideoUploadPage(),
+    MetronomeScreen(),
+    LyricsPage(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Learning Music',
+      title: 'Songlearn',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Register(),
-       routes: {
+      home: _pages[_selectedIndex],
+      routes: {
         '/menu': (context) => MenuPage(),
         '/login': (context) => Login(),
         '/register': (context) => Register(),
@@ -44,107 +64,67 @@ class LearningMusicApp extends StatelessWidget {
   }
 }
 
-class MenuPage extends StatelessWidget {
+class MenuPage extends StatefulWidget {
+  @override
+  _MenuPageState createState() => _MenuPageState();
+}
+
+class _MenuPageState extends State<MenuPage> {
+  int _selectedIndex = 0;
+
+  final List<Widget> _pages = [
+    VideoListPage(),
+    MapScreen(),
+    QRCodeScannerPage(),
+    VideoUploadPage(),
+    MetronomeScreen(),
+    LyricsPage(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Learning Music'),
+        title: Text('Songlearn'),
       ),
-      body: Center(
-        child: ButtonBar(
-          alignment: MainAxisAlignment.center,
-          children: <Widget>[
-            ElevatedButton.icon(
-              onPressed: () {
-                Navigator.pushNamed(context, '/videoList');
-              },
-              icon: Icon(Icons.book),
-              label: Text('Lessons'),
-            ),
-            ElevatedButton.icon(
-              onPressed: () {
-                Navigator.pushNamed(context, '/map');
-              },
-              icon: Icon(Icons.map_rounded),
-              label: Text('Map of Users'),
-            ),
-            ElevatedButton.icon(
-              onPressed: () {
-                Navigator.pushNamed(context, '/QRCodeScanner');
-              },
-              icon: Icon(Icons.music_note),
-              label: Text('Scan Lesson'),
-            ),
-            ElevatedButton.icon(
-              onPressed: () {
-                Navigator.pushNamed(context, '/video');
-              },
-              icon: Icon(Icons.video_camera_back),
-              label: Text('Upload Video/lesson'),
-            ),
-            ElevatedButton.icon(
-              onPressed: () {
-                Navigator.pushNamed(context, '/metronome');
-              },
-              icon: Icon(Icons.settings),
-              label: Text('Metronome'),
-            ),
-             ElevatedButton.icon(
-              onPressed: () {
-                Navigator.pushNamed(context, '/lyrics');
-              },
-              icon: Icon(Icons.sign_language),
-              label: Text('Lyrics'),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class MenuButton extends StatelessWidget {
-  final String title;
-  final IconData icon;
-  final VoidCallback onTap;
-
-  const MenuButton({
-    required this.title,
-    required this.icon,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        width: 200,
-        height: 100,
-        decoration: BoxDecoration(
-          color: Colors.blue,
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Icon(
-              icon,
-              color: Colors.white,
-              size: 40,
-            ),
-            SizedBox(height: 10),
-            Text(
-              title,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
-        ),
+      body: _pages[_selectedIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.grey[900],
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.book),
+            label: 'Lessons',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.map_rounded),
+            label: 'Map of Users',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.music_note),
+            label: 'Scan Lesson',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.video_camera_back),
+            label: 'Upload Video/lesson',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.timelapse),
+            label: 'Metronome',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.sign_language),
+            label: 'Lyrics',
+          ),
+        ],
       ),
     );
   }
