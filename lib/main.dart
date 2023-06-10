@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:songlearn/Pages/Register.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'Pages/Login.dart';
@@ -25,10 +26,23 @@ class LearningMusicApp extends StatefulWidget {
 
 class _LearningMusicAppState extends State<LearningMusicApp> {
   int _selectedIndex = 0;
+  late VideoBloc _videoBloc;
+
+  @override
+  void initState() {
+    super.initState();
+    _videoBloc = VideoBloc();
+  }
+
+  @override
+  void dispose() {
+    _videoBloc.dispose();
+    super.dispose();
+  }
 
   final List<Widget> _pages = [
     Login(),
-    MenuPage(),
+    MenuPage(videoBloc: VideoBloc()),
     MapScreen(),
     VideoUploadPage(),
     MetronomeScreen(),
@@ -44,18 +58,22 @@ class _LearningMusicAppState extends State<LearningMusicApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Songlearn',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        brightness: Brightness.dark,
+        scaffoldBackgroundColor: Colors.black,
+        textTheme: TextTheme(
+          bodyText1: TextStyle(color: Colors.white),
+          bodyText2: TextStyle(color: Colors.white),
+        ),
       ),
       home: _pages[_selectedIndex],
       routes: {
-        '/menu': (context) => MenuPage(),
+        '/menu': (context) => MenuPage(videoBloc: _videoBloc),
         '/login': (context) => Login(),
         '/register': (context) => Register(),
         '/map': (context) => MapScreen(),
         '/video': (context) => VideoUploadPage(),
-        '/videoList': (context) => VideoListPage(),
+        '/videoList': (context) => VideoListPage(videoBloc: _videoBloc),
         '/QRCodeScanner': (context) => QRCodeScannerPage(),
         '/metronome': (context) => MetronomeScreen(),
         '/lyrics': (context) => LyricsPage(),
@@ -65,6 +83,10 @@ class _LearningMusicAppState extends State<LearningMusicApp> {
 }
 
 class MenuPage extends StatefulWidget {
+  final VideoBloc videoBloc;
+
+  MenuPage({required this.videoBloc});
+
   @override
   _MenuPageState createState() => _MenuPageState();
 }
@@ -72,8 +94,17 @@ class MenuPage extends StatefulWidget {
 class _MenuPageState extends State<MenuPage> {
   int _selectedIndex = 0;
 
+  late VideoBloc _videoBloc; // Add this line
+
+  @override
+  void initState() {
+    super.initState();
+    _videoBloc = widget.videoBloc; // Assign widget.videoBloc to _videoBloc
+  }
+
   final List<Widget> _pages = [
-    VideoListPage(),
+    VideoListPage(
+        videoBloc: VideoBloc()), // Remove the videoBloc parameter here
     MapScreen(),
     QRCodeScannerPage(),
     VideoUploadPage(),
@@ -90,9 +121,6 @@ class _MenuPageState extends State<MenuPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Songlearn'),
-      ),
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
@@ -101,7 +129,7 @@ class _MenuPageState extends State<MenuPage> {
         onTap: _onItemTapped,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.book),
+            icon: Icon(Icons.book_rounded),
             label: 'Lessons',
           ),
           BottomNavigationBarItem(
@@ -109,19 +137,19 @@ class _MenuPageState extends State<MenuPage> {
             label: 'Map of Users',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.music_note),
+            icon: FaIcon(FontAwesomeIcons.qrcode),
             label: 'Scan Lesson',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.video_camera_back),
-            label: 'Upload Video/lesson',
+            label: 'Upload lesson',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.timelapse),
+            icon: Icon(Icons.hourglass_bottom_rounded),
             label: 'Metronome',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.sign_language),
+            icon: Icon(Icons.queue_music),
             label: 'Lyrics',
           ),
         ],
