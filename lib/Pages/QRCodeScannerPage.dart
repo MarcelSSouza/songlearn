@@ -31,7 +31,6 @@ class _QRCodeScannerPageState extends State<QRCodeScannerPage> {
               TextButton(
                 onPressed: () {
                   Navigator.pop(context); // Fechar o diálogo de erro
-                  Navigator.pop(context); // Voltar à página anterior
                 },
                 child: Text('OK'),
               ),
@@ -52,13 +51,37 @@ class _QRCodeScannerPageState extends State<QRCodeScannerPage> {
       appBar: AppBar(
         title: Text('QR Code Scanner'),
       ),
+      backgroundColor: Colors.black,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Result: $result'),
+            Text(
+              'Result: $result',
+              style: TextStyle(color: Colors.white),
+            ),
+            SizedBox(height: 16),
+            Card(
+              elevation: 2,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: Padding(
+                padding: EdgeInsets.all(16),
+                child: Text(
+                  'QR Code',
+                  style: TextStyle(fontSize: 24),
+                ),
+              ),
+            ),
+            SizedBox(height: 16),
             ElevatedButton(
               onPressed: _scanQRCode,
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+              ),
               child: Text('Scan QR Code'),
             ),
           ],

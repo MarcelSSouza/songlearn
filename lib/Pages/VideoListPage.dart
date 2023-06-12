@@ -67,65 +67,97 @@ class _VideoListPageState extends State<VideoListPage> {
     super.dispose();
   }
 
+  void refreshVideos() {
+    widget.videoBloc.fetchVideos();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Lessons'),
-      ),
-      body: StreamBuilder<List<Video>>(
-        stream: widget.videoBloc.videosStream,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          } else if (snapshot.hasError) {
-            return Center(
-              child: Text('Error: ${snapshot.error}'),
-            );
-          } else if (snapshot.hasData) {
-            List<Video> videos = snapshot.data!;
+      body: SafeArea(
+        child: Column(
+          children: [
+            Container(
+              alignment: Alignment.center,
+              height: 56.0,
+              width: double.infinity,
+              color: Colors.grey[900],
+              child: Text(
+                'Lessons',
+                style: TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.w500,
+                  color: Color(0xFF00B37E),
+                ),
+              ),
+            ),
+            Expanded(
+              child: StreamBuilder<List<Video>>(
+                stream: widget.videoBloc.videosStream,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  } else if (snapshot.hasError) {
+                    return Center(
+                      child: Text('Error: ${snapshot.error}'),
+                    );
+                  } else if (snapshot.hasData) {
+                    List<Video> videos = snapshot.data!;
 
-            return Container(
-              padding: EdgeInsets.all(16.0),
-              child: ListView.builder(
-                itemCount: videos.length,
-                itemBuilder: (context, index) {
-                  return Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16.0),
-                    ),
-                    elevation: 4.0,
-                    margin: EdgeInsets.symmetric(vertical: 8.0),
-                    child: ListTile(
-                      title: Text(
-                        videos[index].name,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => VideoPlayerPage(
-                              videoUrl: videos[index].url,
+                    return Container(
+                      padding: EdgeInsets.all(8.0),
+                      child: ListView.builder(
+                        itemCount: videos.length,
+                        itemBuilder: (context, index) {
+                          return Card(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(32.0),
                             ),
-                          ),
-                        );
-                      },
-                    ),
-                  );
+                            elevation: 4.0,
+                            margin: EdgeInsets.symmetric(vertical: 4.0),
+                            child: ListTile(
+                              tileColor: Colors.grey[900],
+                              leading: Icon(
+                                Icons.video_collection,
+                                color: Color(0xFF00B37E),
+                              ),
+                              title: Text(
+                                videos[index].name,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => VideoPlayerPage(
+                                      videoUrl: videos[index].url,
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          );
+                        },
+                      ),
+                    );
+                  } else {
+                    return Center(
+                      child: Text('No videos available.'),
+                    );
+                  }
                 },
               ),
-            );
-          } else {
-            return Center(
-              child: Text('No videos available.'),
-            );
-          }
-        },
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: refreshVideos, // Refresh videos on button press
+        child: Icon(Icons.refresh),
       ),
     );
   }
