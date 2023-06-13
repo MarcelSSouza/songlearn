@@ -29,11 +29,10 @@ class VideoBloc {
     }
 
     _videos = fetchedVideos;
-    _videosSubject.add(_videos); // Notificar a conclusão do carregamento
+    _videosSubject.add(_videos);
 
     if (_videos.isEmpty) {
-      _videosSubject
-          .close(); // Fechar o StreamController se a lista estiver vazia
+      _videosSubject.close();
     }
   }
 

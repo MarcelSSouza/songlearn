@@ -25,12 +25,12 @@ class _QRCodeScannerPageState extends State<QRCodeScannerPage> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Erro'),
-            content: Text('Ocorreu um erro ao escanear o QR code: $e'),
+            title: Text('Error'),
+            content: Text('An error occurred while scanning the QR code: $e'),
             actions: [
               TextButton(
                 onPressed: () {
-                  Navigator.pop(context); // Fechar o diálogo de erro
+                  Navigator.pop(context);
                 },
                 child: Text('OK'),
               ),
@@ -45,44 +45,122 @@ class _QRCodeScannerPageState extends State<QRCodeScannerPage> {
     await launchUrl(url);
   }
 
+  void _clearResult() {
+    setState(() {
+      result = '';
+    });
+  }
+
+  void _openVideoPlayer() {
+    if (result != null && result!.isNotEmpty) {
+      _launchURL(Uri.parse(result!));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('QR Code Scanner'),
-      ),
-      backgroundColor: Colors.black,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+    return SafeArea(
+      child: Scaffold(
+        body: Stack(
           children: [
-            Text(
-              'Result: $result',
-              style: TextStyle(color: Colors.white),
-            ),
-            SizedBox(height: 16),
-            Card(
-              elevation: 2,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
-              ),
-              child: Padding(
-                padding: EdgeInsets.all(16),
-                child: Text(
-                  'QR Code',
-                  style: TextStyle(fontSize: 24),
+            Positioned(
+              top: 0,
+              left: 0,
+              right: 0,
+              child: Container(
+                padding: EdgeInsets.symmetric(vertical: 16.0),
+                color: Colors.grey[900],
+                child: Center(
+                  child: Text(
+                    'Scan Lesson QR Code',
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xFF64FEDA),
+                    ),
+                  ),
                 ),
               ),
             ),
-            SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: _scanQRCode,
-              style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
+            Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  if (result != null && result!.isNotEmpty)
+                    Card(
+                      elevation: 2,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      margin: EdgeInsets.all(32),
+                      child: Padding(
+                        padding: EdgeInsets.all(8),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    'Result: ',
+                                    style: TextStyle(
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.w500,
+                                      color: Color(0xFF64FEDA),
+                                    ),
+                                  ),
+                                ),
+                                IconButton(
+                                  onPressed: _clearResult,
+                                  icon: Icon(Icons.close),
+                                  color: Colors.white,
+                                  iconSize: 28,
+                                ),
+                              ],
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                '$result',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                            ElevatedButton(
+                              onPressed: _openVideoPlayer,
+                              style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(16),
+                                ),
+                                backgroundColor: Color(0xFF64FEDA),
+                              ),
+                              child: Text(
+                                'Open Video Player',
+                                style: TextStyle(
+                                  color: Colors.grey[900],
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ElevatedButton(
+                    onPressed: _scanQRCode,
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      backgroundColor: Color(0xFF64FEDA),
+                    ),
+                    child: Text(
+                      'Scan QR Code',
+                      style: TextStyle(color: Colors.grey[900], fontSize: 20),
+                    ),
+                  ),
+                ],
               ),
-              child: Text('Scan QR Code'),
             ),
           ],
         ),

@@ -104,7 +104,7 @@ class _MapScreenState extends State<MapScreen> {
               },
             ),
             Container(
-              height: 50,
+              height: 56,
               color: Colors.grey[900],
               child: Center(
                 child: Text(

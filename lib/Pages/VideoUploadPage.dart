@@ -53,14 +53,12 @@ class _VideoUploadPageState extends State<VideoUploadPage> {
           });
 
           print('Download URL: $downloadURL');
-          // Alert the user that upload was successful
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text('Video uploaded successfully'),
             ),
           );
 
-          // Reset the state after successful upload
           Future.delayed(Duration(seconds: 2), () {
             if (mounted) {
               setState(() {
@@ -126,18 +124,21 @@ class _VideoUploadPageState extends State<VideoUploadPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     if (_videoFile == null)
-                      ElevatedButton(
-                        onPressed: _pickVideo,
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16),
+                      Center(
+                        child: ElevatedButton(
+                          onPressed: _pickVideo,
+                          style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            primary: Color(0xFF64FEDA),
                           ),
-                          primary: Color(0xFF64FEDA),
-                        ),
-                        child: Text(
-                          'Select Video',
-                          style: TextStyle(
-                            color: Colors.black,
+                          child: Text(
+                            'Select Video',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.w500),
                           ),
                         ),
                       ),

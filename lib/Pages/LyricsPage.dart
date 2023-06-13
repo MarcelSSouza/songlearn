@@ -18,7 +18,8 @@ class _LyricsPageState extends State<LyricsPage> {
     String searchQuery = _searchController.text.trim();
 
     if (searchQuery.isNotEmpty) {
-      String apiUrl = 'https://some-random-api.com/others/lyrics?title=$searchQuery';
+      String apiUrl =
+          'https://some-random-api.com/others/lyrics?title=$searchQuery';
       http.Response response = await http.get(Uri.parse(apiUrl));
 
       if (response.statusCode == 200) {
@@ -47,55 +48,172 @@ class _LyricsPageState extends State<LyricsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Lyrics Search'),
-      ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            TextField(
-              controller: _searchController,
-              decoration: InputDecoration(
-                hintText: 'Enter song name',
+    return SafeArea(
+      child: Scaffold(
+        body: Center(
+          child: Stack(
+            children: [
+              Positioned(
+                top: 0,
+                left: 0,
+                right: 0,
+                child: Container(
+                  padding: EdgeInsets.symmetric(vertical: 16.0),
+                  color: Colors.grey[900],
+                  child: Center(
+                    child: Text(
+                      'Lyrics',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xFF64FEDA),
+                      ),
+                    ),
+                  ),
+                ),
               ),
-            ),
-            SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: _fetchLyrics,
-              child: Text('Search'),
-            ),
-            SizedBox(height: 16.0),
-            Text(
-              'Artist: $_artist',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
+              Container(
+                margin: EdgeInsets.only(top: 55.0),
+                child: Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: ListView(
+                    padding: EdgeInsets.zero,
+                    children: [
+                      Card(
+                        color: Colors.grey[900],
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16.0),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.all(16.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              TextField(
+                                controller: _searchController,
+                                decoration: InputDecoration(
+                                    alignLabelWithHint: true,
+                                    hintText: 'Search for lyrics...',
+                                    hintStyle:
+                                        TextStyle(color: Color(0xFF64FEDA))),
+                                style: TextStyle(color: Colors.white),
+                                onChanged: (value) {
+                                  setState(() {});
+                                },
+                              ),
+                              SizedBox(height: 16.0),
+                              ElevatedButton.icon(
+                                onPressed: _fetchLyrics,
+                                icon: Icon(
+                                  Icons.search,
+                                  color: Colors.grey[900],
+                                ),
+                                label: Text(
+                                  'Search',
+                                  style: TextStyle(
+                                      color: Colors.grey[900],
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                  primary: Color(0xFF64FEDA),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(16.0),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 16.0),
+                      Visibility(
+                        visible: _lyrics.isNotEmpty,
+                        child: Card(
+                          color: Colors.grey[900],
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16.0),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.all(16.0),
+                            child: Row(
+                              children: [
+                                if (_thumbnailUrl.isNotEmpty)
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(16.0),
+                                    child: Image.network(
+                                      _thumbnailUrl,
+                                      height: 120,
+                                      width: 120,
+                                    ),
+                                  ),
+                                SizedBox(width: 16.0),
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Artist',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 18,
+                                          color: Color(0xFF64FEDA),
+                                        ),
+                                      ),
+                                      SizedBox(height: 8.0),
+                                      Text(
+                                        '$_artist',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 16,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      SizedBox(height: 8.0),
+                                      Text(
+                                        'Title',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 18,
+                                          color: Color(0xFF64FEDA),
+                                        ),
+                                      ),
+                                      SizedBox(height: 8.0),
+                                      Text(
+                                        '$_title',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 16,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: SingleChildScrollView(
+                          child: Padding(
+                            padding: EdgeInsets.all(32.0),
+                            child: Text(
+                              _lyrics,
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.w400),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
-            ),
-            SizedBox(height: 8.0),
-            Text(
-              'Title: $_title',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 16.0),
-            _thumbnailUrl.isNotEmpty
-                ? Image.network(
-                    _thumbnailUrl,
-                    height: 100,
-                    width: 100,
-                  )
-                : Container(),
-            SizedBox(height: 16.0),
-            Expanded(
-              child: SingleChildScrollView(
-                child: Text(_lyrics),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

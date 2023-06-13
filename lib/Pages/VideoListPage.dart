@@ -1,9 +1,10 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:video_player/video_player.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Video {
   final String name;
@@ -19,7 +20,7 @@ class VideoBloc {
   bool _isDisposed = false;
 
   void fetchVideos() async {
-    if (_isDisposed) return; // Do not fetch videos if the bloc is disposed
+    if (_isDisposed) return;
 
     ListResult result = await FirebaseStorage.instance.ref().listAll();
     List<Video> fetchedVideos = [];
@@ -32,10 +33,10 @@ class VideoBloc {
     }
 
     _videos = fetchedVideos;
-    _videosSubject.add(_videos); // Notify the completion of loading
+    _videosSubject.add(_videos);
 
     if (_videos.isEmpty) {
-      _videosSubject.close(); // Close the BehaviorSubject if the list is empty
+      _videosSubject.close();
     }
   }
 
@@ -46,7 +47,7 @@ class VideoBloc {
 }
 
 class VideoListPage extends StatefulWidget {
-  final VideoBloc videoBloc;
+  VideoBloc videoBloc;
 
   VideoListPage({required this.videoBloc});
 
@@ -58,7 +59,7 @@ class _VideoListPageState extends State<VideoListPage> {
   @override
   void initState() {
     super.initState();
-    widget.videoBloc.fetchVideos();
+    reloadPage();
   }
 
   @override
@@ -67,8 +68,28 @@ class _VideoListPageState extends State<VideoListPage> {
     super.dispose();
   }
 
-  void refreshVideos() {
-    widget.videoBloc.fetchVideos();
+  void reloadPage() {
+    setState(() {
+      widget.videoBloc.dispose();
+      widget.videoBloc = VideoBloc();
+      widget.videoBloc.fetchVideos();
+    });
+  }
+
+  void reloadVideos() {
+    reloadPage();
+  }
+
+  Future<void> _generateQRCode(String videoUrl) async {
+    String qrCodeData = videoUrl;
+    String qrCodeUrl =
+        'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=$qrCodeData';
+
+    if (await canLaunch(qrCodeUrl)) {
+      await launch(qrCodeUrl);
+    } else {
+      print('Could not launch QR code URL');
+    }
   }
 
   @override
@@ -87,7 +108,7 @@ class _VideoListPageState extends State<VideoListPage> {
                 style: TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.w500,
-                  color: Color(0xFF00B37E),
+                  color: Color(0xFF64FEDA),
                 ),
               ),
             ),
@@ -116,12 +137,12 @@ class _VideoListPageState extends State<VideoListPage> {
                               borderRadius: BorderRadius.circular(32.0),
                             ),
                             elevation: 4.0,
-                            margin: EdgeInsets.symmetric(vertical: 4.0),
+                            margin: EdgeInsets.symmetric(vertical: 2.0),
                             child: ListTile(
                               tileColor: Colors.grey[900],
                               leading: Icon(
                                 Icons.video_collection,
-                                color: Color(0xFF00B37E),
+                                color: Color(0xFF64FEDA),
                               ),
                               title: Text(
                                 videos[index].name,
@@ -139,6 +160,16 @@ class _VideoListPageState extends State<VideoListPage> {
                                   ),
                                 );
                               },
+                              trailing: IconButton(
+                                icon: FaIcon(
+                                  FontAwesomeIcons.qrcode,
+                                  color: Color(0xFF64FEDA),
+                                ),
+                                onPressed: () {
+                                  String videoUrl = videos[index].url;
+                                  _generateQRCode(videoUrl);
+                                },
+                              ),
                             ),
                           );
                         },
@@ -156,7 +187,7 @@ class _VideoListPageState extends State<VideoListPage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: refreshVideos, // Refresh videos on button press
+        onPressed: reloadPage,
         child: Icon(Icons.refresh),
       ),
     );
@@ -207,5 +238,26 @@ class _VideoPlayerPageState extends State<VideoPlayerPage> {
         ),
       );
     }
+  }
+}
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  final VideoBloc videoBloc = VideoBloc();
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Video Player Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: VideoListPage(
+        videoBloc: videoBloc,
+      ),
+    );
   }
 }
